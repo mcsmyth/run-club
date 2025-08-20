@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/run-club/static/css/main.40441e16.css",
-    "main.js": "/run-club/static/js/main.c34e2aa3.js",
+    "main.css": "/run-club/static/css/main.5dd738f1.css",
+    "main.js": "/run-club/static/js/main.deb4ae16.js",
     "static/js/453.09b04592.chunk.js": "/run-club/static/js/453.09b04592.chunk.js",
     "index.html": "/run-club/index.html",
-    "main.40441e16.css.map": "/run-club/static/css/main.40441e16.css.map",
-    "main.c34e2aa3.js.map": "/run-club/static/js/main.c34e2aa3.js.map",
+    "main.5dd738f1.css.map": "/run-club/static/css/main.5dd738f1.css.map",
+    "main.deb4ae16.js.map": "/run-club/static/js/main.deb4ae16.js.map",
     "453.09b04592.chunk.js.map": "/run-club/static/js/453.09b04592.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.40441e16.css",
-    "static/js/main.c34e2aa3.js"
+    "static/css/main.5dd738f1.css",
+    "static/js/main.deb4ae16.js"
   ]
 }

@@ -10,7 +10,7 @@ const Footer: React.FC = () => {
           <div className="col-span-1 md:col-span-2">
             <div className="flex items-center space-x-3 mb-4">
               <img 
-                src="/run-club-logo.png" 
+                src={`${process.env.PUBLIC_URL}/run-club-logo.png`}
                 alt="Run Club Logo" 
                 className="h-16 w-auto"
               />

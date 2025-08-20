@@ -56,7 +56,7 @@ const Home: React.FC = () => {
           <div className="text-center">
             <div className="flex justify-center mb-8">
               <img 
-                src="/run-club-logo.png" 
+                src={`${process.env.PUBLIC_URL}/run-club-logo.png`}
                 alt="Run Club Logo" 
                 className="h-48 w-auto"
               />

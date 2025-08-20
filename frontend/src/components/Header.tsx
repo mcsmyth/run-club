@@ -10,7 +10,7 @@ const Header: React.FC = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-3">
             <img 
-              src="/run-club-logo.png" 
+              src={`${process.env.PUBLIC_URL}/run-club-logo.png`}
               alt="Run Club Logo" 
               className="h-20 w-auto"
             />

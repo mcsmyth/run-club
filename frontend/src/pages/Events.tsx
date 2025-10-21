@@ -1,7 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Calendar, MapPin, Clock } from 'lucide-react';
+import ContactModal from '../components/ContactModal';
 
 const Events: React.FC = () => {
+  const [modalOpen, setModalOpen] = useState(false);
+  const [selectedEvent, setSelectedEvent] = useState('');
+
+  const handleJoinEvent = (eventTitle: string) => {
+    setSelectedEvent(eventTitle);
+    setModalOpen(true);
+  };
+
   const upcomingEvents = [
     {
       id: 1,
@@ -58,13 +67,23 @@ const Events: React.FC = () => {
                   <span>{event.location}</span>
                 </div>
               </div>
-              <button className="w-full mt-4 bg-primary text-white py-2 px-4 rounded-lg hover:bg-primary-dark transition-colors">
+              <button 
+                onClick={() => handleJoinEvent(event.title)}
+                className="w-full mt-4 bg-primary text-white py-2 px-4 rounded-lg hover:bg-primary-dark transition-colors"
+              >
                 Join Event
               </button>
             </div>
           ))}
         </div>
       </div>
+
+      {/* Contact Modal */}
+      <ContactModal
+        isOpen={modalOpen}
+        onClose={() => setModalOpen(false)}
+        eventTitle={selectedEvent}
+      />
     </div>
   );
 };

@@ -1,8 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Calendar, Users, ShoppingBag, TrendingUp, MapPin, Clock } from 'lucide-react';
+import ContactModal from '../components/ContactModal';
 
 const Home: React.FC = () => {
+  const [modalOpen, setModalOpen] = useState(false);
+  const [selectedEvent, setSelectedEvent] = useState('');
+
+  const handleJoinEvent = (eventTitle: string) => {
+    setSelectedEvent(eventTitle);
+    setModalOpen(true);
+  };
+
   const upcomingEvents = [
     {
       id: 1,
@@ -54,13 +63,6 @@ const Home: React.FC = () => {
       <section className="bg-gradient-to-br from-primary to-secondary text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
           <div className="text-center">
-            <div className="flex justify-center mb-8">
-              <img 
-                src={`${process.env.PUBLIC_URL}/run-club-logo.png`}
-                alt="Run Club Logo" 
-                className="h-48 w-auto"
-              />
-            </div>
             <h1 className="text-4xl md:text-6xl font-bold mb-6">
             Stride, stroll, or sprint.
             </h1>
@@ -123,7 +125,10 @@ const Home: React.FC = () => {
                   </div>
 
                 </div>
-                <button className="w-full mt-4 bg-primary text-white py-2 px-4 rounded-lg hover:bg-primary-dark transition-colors">
+                <button 
+                  onClick={() => handleJoinEvent(event.title)}
+                  className="w-full mt-4 bg-primary text-white py-2 px-4 rounded-lg hover:bg-primary-dark transition-colors"
+                >
                   Join Event
                 </button>
               </div>
@@ -149,6 +154,13 @@ const Home: React.FC = () => {
           </Link>
         </div>
       </section>
+
+      {/* Contact Modal */}
+      <ContactModal
+        isOpen={modalOpen}
+        onClose={() => setModalOpen(false)}
+        eventTitle={selectedEvent}
+      />
     </div>
   );
 };

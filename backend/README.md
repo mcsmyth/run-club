@@ -59,3 +59,21 @@ The sign-up endpoint expects:
   "timestamp": "2024-01-15T10:30:00.000Z"
 }
 ```
+
+## Security Requirements
+
+⚠️ **CRITICAL SECURITY NOTES:**
+
+- **NEVER commit `credentials.json` or `.env` files to version control**
+- Use environment variables for all sensitive configuration
+- Rotate Google Cloud service account keys regularly
+- Use least-privilege access for service accounts
+- Consider implementing rate limiting for production use
+- Add input validation and sanitization for production
+- Use HTTPS in production environments
+- Monitor API usage and implement logging
+
+### Environment Setup
+1. Create a `.env` file with your configuration
+2. Ensure `.env` and `credentials.json` are in `.gitignore`
+3. For production, use your hosting platform's environment variable system

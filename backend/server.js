@@ -10,11 +10,29 @@ const PORT = process.env.PORT || 3001;
 app.use(cors());
 app.use(express.json());
 
-// Google Sheets setup
-const auth = new google.auth.GoogleAuth({
-  keyFile: process.env.GOOGLE_CREDENTIALS_FILE || './credentials.json',
-  scopes: ['https://www.googleapis.com/auth/spreadsheets'],
-});
+// Google Sheets setup - supports both file-based and environment variable authentication
+let auth;
+
+if (process.env.GOOGLE_CREDENTIALS_JSON) {
+  // Production: Use environment variable with JSON credentials
+  const credentials = JSON.parse(process.env.GOOGLE_CREDENTIALS_JSON);
+  auth = new google.auth.GoogleAuth({
+    credentials: credentials,
+    scopes: ['https://www.googleapis.com/auth/spreadsheets'],
+  });
+} else if (process.env.GOOGLE_CREDENTIALS_FILE) {
+  // Development: Use credentials file
+  auth = new google.auth.GoogleAuth({
+    keyFile: process.env.GOOGLE_CREDENTIALS_FILE,
+    scopes: ['https://www.googleapis.com/auth/spreadsheets'],
+  });
+} else {
+  // Fallback: Try default credentials.json (for local development)
+  auth = new google.auth.GoogleAuth({
+    keyFile: './credentials.json',
+    scopes: ['https://www.googleapis.com/auth/spreadsheets'],
+  });
+}
 
 const sheets = google.sheets({ version: 'v4', auth });
 

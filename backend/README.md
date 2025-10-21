@@ -24,12 +24,32 @@ npm install
 
 ### 3. Environment Configuration
 
-1. Copy `env.example` to `.env`
+#### Development Setup
+1. Create a `.env` file in the backend directory
 2. Fill in the following variables:
    - `GOOGLE_SHEET_ID`: Your Google Sheet ID
    - `SHEET_NAME`: Name of the sheet tab (default: "Sign-ups")
    - `GOOGLE_CREDENTIALS_FILE`: Path to your service account JSON file
    - `PORT`: Server port (default: 3001)
+
+#### Production Setup (Recommended)
+For production deployment, use environment variables instead of credential files:
+
+```bash
+# Required variables
+GOOGLE_SHEET_ID=your_google_sheet_id
+SHEET_NAME=Sign-ups
+PORT=3001
+
+# Authentication (choose one)
+# Method 1: JSON credentials as environment variable (SECURE)
+GOOGLE_CREDENTIALS_JSON={"type":"service_account","project_id":"your-project",...}
+
+# Method 2: File path (less secure)
+# GOOGLE_CREDENTIALS_FILE=/path/to/credentials.json
+```
+
+See [PRODUCTION-DEPLOYMENT.md](../PRODUCTION-DEPLOYMENT.md) for detailed deployment instructions.
 
 ### 4. Run the Server
 

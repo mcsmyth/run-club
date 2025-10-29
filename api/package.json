@@ -1,0 +1,8 @@
+{
+  "name": "run-club-api",
+  "version": "1.0.0",
+  "description": "Serverless API functions for Run Club",
+  "dependencies": {
+    "googleapis": "^128.0.0"
+  }
+}

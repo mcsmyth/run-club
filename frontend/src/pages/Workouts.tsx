@@ -1,5 +1,5 @@
 import React from 'react';
-import { Clock, Target, TrendingUp } from 'lucide-react';
+import { Clock, Target } from 'lucide-react';
 
 const Workouts: React.FC = () => {
   const workoutPlan = {

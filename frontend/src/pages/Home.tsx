@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Calendar, Users, ShoppingBag, TrendingUp, MapPin, Clock } from 'lucide-react';
+import { Calendar, MapPin, Clock } from 'lucide-react';
 import ContactModal from '../components/ContactModal';
 
 const Home: React.FC = () => {
@@ -36,24 +36,6 @@ const Home: React.FC = () => {
       time: '5:00 PM',
       location: 'Burlingame High School Track',
       participants: 32
-    }
-  ];
-
-  const features = [
-    {
-      icon: Calendar,
-      title: 'Event Calendar',
-      description: 'Browse and join upcoming running events in your area.'
-    },
-    {
-      icon: Users,
-      title: 'Workout Tracking',
-      description: 'Log your runs and track your progress over time.'
-    },
-    {
-      icon: ShoppingBag,
-      title: 'Club Store',
-      description: 'Get official Run Club gear and accessories.'
     }
   ];
 

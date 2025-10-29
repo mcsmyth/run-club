@@ -1,0 +1,9 @@
+{
+  "name": "run-club",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "cd frontend && npm run build",
+    "install": "npm --prefix api install && npm --prefix frontend install"
+  }
+}

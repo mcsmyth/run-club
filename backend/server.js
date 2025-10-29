@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+const path = require('path');
 const { google } = require('googleapis');
 require('dotenv').config();
 
@@ -122,10 +123,22 @@ app.get('/api/health', (req, res) => {
   res.json({ status: 'OK', message: 'Run Club API is running' });
 });
 
+// Serve static files from React app in production
+if (process.env.NODE_ENV === 'production') {
+  // Serve static files from the React frontend app
+  app.use(express.static(path.join(__dirname, '../frontend/build')));
+
+  // Anything that doesn't match an API route should serve the React app
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../frontend/build', 'index.html'));
+  });
+}
+
 // Initialize the sheet when the server starts
 initializeSheet();
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
+  console.log(`Environment: ${process.env.NODE_ENV || 'development'}`);
   console.log(`Health check: http://localhost:${PORT}/api/health`);
 });
